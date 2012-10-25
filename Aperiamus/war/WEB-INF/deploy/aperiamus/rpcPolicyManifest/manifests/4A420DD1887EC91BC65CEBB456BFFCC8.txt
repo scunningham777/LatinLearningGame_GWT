@@ -1,0 +1,2 @@
+serviceClass: com.trickypig.aperiamus.client.GreetingService
+path: ABDCFD0A0D09C589D4167FA899CE1DD1.gwt.rpc
