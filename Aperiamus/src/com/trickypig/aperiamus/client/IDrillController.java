@@ -1,6 +1,6 @@
 package com.trickypig.aperiamus.client;
 
-public interface IDrillPresenter {
+public interface IDrillController {
 
 	void startNewDrillInstance(DrillInstanceInfo curDrillInstanceInfo);
 
