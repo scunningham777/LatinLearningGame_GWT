@@ -15,6 +15,11 @@
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.trickypig.aperiamus.client.Aperiamus'/>
+  
+  <!-- Use ClientFactoryImpl by default -->
+    <replace-with class="com.trickypig.aperiamus.client.IPhoneClientFactory">
+    <when-type-is class="com.trickypig.aperiamus.client.IClientFactory"/>
+    </replace-with>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
