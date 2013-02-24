@@ -3,22 +3,22 @@ package com.trickypig.aperiamus.client;
 public class BaseContentManager implements IDrillContentManager {
 
 	private IClientFactory clientFactory;
-	private IDrillContent currentDrillContent;
 	
 	public BaseContentManager(IClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
 	}
 
 	@Override
-	public void storeDrillContent(IDrillContent content) {
-		currentDrillContent = content;
+	public IDrillInstanceContent generateDrillInstanceContent(IDrillContent availableContent, IDrillInstancePresenter currentInstancePresenter) {
+		IDrillInstanceContent newInstance = new BaseDrillInstanceContent();
+		newInstance.setDrillPresenter(currentInstancePresenter);				//should I do this here, or should presenter inject itself to instance?
+		return newInstance;
 	}
 
 	@Override
-	public IDrillInstanceContent generateDrillInstanceContent() {
-		IDrillInstanceContent newInstance = new BaseDrillInstanceContent();
-		newInstance.setDrillPresenter(new BaseDrillInstancePresenter(clientFactory));
-		return newInstance;
+	public IDrillInstancePresenter getValidDrillPresenter(IDrillContent availableContent) {
+		// TODO Auto-generated method stub
+		return new BaseDrillInstancePresenter(clientFactory);
 	}
 
 }

@@ -4,7 +4,9 @@ public class DrillModeController implements IDrillModeController{
 
 	private IClientFactory clientFactory;
 	private IDrillContentManager contentManager;
-	private IDrillInstanceContent curInstance;
+	private IDrillContent currentDrillContent;
+	private IDrillInstanceContent currentInstance;
+	
 	
 	public DrillModeController(IClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -13,12 +15,18 @@ public class DrillModeController implements IDrillModeController{
 	@Override
 	public void startNewDrill(IDrillContent availableContent) {
 		if (availableContent == null) {
-			availableContent = clientFactory.getDrillContentGenerator().obtainNewDrillSessionContent();
+			availableContent = clientFactory.getDrillContentGenerator().obtainNewDrillSessionContent();			//is this ok?
 		}
-		getContentManager().storeDrillContent(availableContent);
+//		getContentManager().storeDrillContent(availableContent);
+		setCurrentDrillContent(availableContent);
 		
-		curInstance = getContentManager().generateDrillInstanceContent();
-		curInstance.getDrillPresenter().startDrillInstance(curInstance);			//errm, that seems ugly!!
+		IDrillInstancePresenter currentInstancePresenter = getContentManager().getValidDrillPresenter(availableContent);
+		currentInstance = getContentManager().generateDrillInstanceContent(availableContent, currentInstancePresenter);
+		currentInstancePresenter.startDrillInstance(currentInstance);			
+	}
+
+	private void setCurrentDrillContent(IDrillContent availableContent) {
+		this.currentDrillContent = availableContent;
 	}
 
 	private IDrillContentManager getContentManager() {

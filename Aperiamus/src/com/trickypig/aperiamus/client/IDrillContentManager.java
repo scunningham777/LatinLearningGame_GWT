@@ -1,6 +1,6 @@
 package com.trickypig.aperiamus.client;
 
 public interface IDrillContentManager {
-	public void storeDrillContent(IDrillContent content);
-	public IDrillInstanceContent generateDrillInstanceContent();
+	public IDrillInstanceContent generateDrillInstanceContent(IDrillContent availableContent, IDrillInstancePresenter currentInstancePresenter);
+	public IDrillInstancePresenter getValidDrillPresenter(IDrillContent availableContent);
 }

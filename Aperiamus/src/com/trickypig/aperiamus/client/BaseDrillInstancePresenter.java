@@ -20,7 +20,6 @@ public class BaseDrillInstancePresenter implements IDrillInstancePresenter {
 		curInstanceContent = content;
 		Window.alert("Drill Instance started by BaseDrillInstancePresenter");
 		
-		//high level outline of steps
 		presentIntroScreen();
 		drillResults = initializeDrillResults();
 		responseEvaluator = initializeResponseEvaluator();

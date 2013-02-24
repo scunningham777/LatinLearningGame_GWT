@@ -6,7 +6,7 @@ public interface IDrillInstancePresenter {
 	void exitRequested();
 	
 	//all of the following seem like they belong in implementation classes, not in the interface 
-	//other classes do not interact with these methods, even if every implmenetation should have them
+	//other classes do not interact with these methods, even if every implementation should have them
 //	void bindMenuButtons();
 //	void presentIntroScreen();
 //	void initializeContent(IDrillInstanceContent content);
