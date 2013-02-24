@@ -40,6 +40,18 @@ public class IPhoneClientFactory implements IClientFactory {
 		}
 		return drillContentGenerator;
 	}
+
+	@Override
+	public ITextManager getTextManager() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IDrillView getBaseDrillView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

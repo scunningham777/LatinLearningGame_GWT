@@ -10,9 +10,11 @@ public class BaseDrillInstancePresenter implements IDrillInstancePresenter {
 	private IResponseEvaluator responseEvaluator;
 	private IDrillChallenge currentChallenge;
 	private boolean isCurrentChallengeInitialized = false;
+	private IDrillView drillView;
 
 	public BaseDrillInstancePresenter(IClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.drillView = clientFactory.getBaseDrillView();				//this will allow me to have "classes" of Presenters, each with its own View class, which it could request specifically from the ClientFactory
 	}
 
 	@Override
@@ -28,8 +30,7 @@ public class BaseDrillInstancePresenter implements IDrillInstancePresenter {
 	}
 
 	protected void presentIntroScreen() {
-		// TODO Auto-generated method stub
-		
+		drillView.displayIntroScreen(clientFactory.getTextManager().getBaseDrillIntroText());
 	}
 
 	protected IDrillResults initializeDrillResults() {

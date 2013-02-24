@@ -1,5 +1,6 @@
 package com.trickypig.aperiamus.client;
 
+
 public class BaseContentManager implements IDrillContentManager {
 
 	private IClientFactory clientFactory;

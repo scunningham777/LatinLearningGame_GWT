@@ -7,4 +7,6 @@ public interface IClientFactory {
 	public void setGameController(IGameController gameController);
 	public IExperienceTracker getExperienceTracker();
 	public IDrillContentGenerator getDrillContentGenerator();
+	public ITextManager getTextManager();
+	public IDrillView getBaseDrillView();
 }
