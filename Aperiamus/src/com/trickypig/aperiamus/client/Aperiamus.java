@@ -2,8 +2,9 @@ package com.trickypig.aperiamus.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.trickypig.aperiamus.client.utils.IDrillResultsDelegate;
 
-public class Aperiamus implements EntryPoint, IGameController {
+public class Aperiamus implements EntryPoint, IGameController, IDrillResultsDelegate {
 
 	IClientFactory clientFactory;
 	IModeController currentModeController;
@@ -22,7 +23,13 @@ public class Aperiamus implements EntryPoint, IGameController {
 		}
 		
 		currentModeController = clientFactory.getDrillMode();
-		clientFactory.getDrillMode().startNewDrill(null);
+		clientFactory.getDrillMode().startNewDrill(null, this);
+	}
+
+	@Override
+	public void recordDrillResults(IDrillResults drillResults) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	//don't really see a need for this

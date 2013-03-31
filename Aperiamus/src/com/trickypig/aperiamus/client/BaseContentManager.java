@@ -1,5 +1,7 @@
 package com.trickypig.aperiamus.client;
 
+import com.trickypig.aperiamus.client.utils.IDrillResultsDelegate;
+
 
 public class BaseContentManager implements IDrillContentManager {
 
@@ -17,9 +19,8 @@ public class BaseContentManager implements IDrillContentManager {
 	}
 
 	@Override
-	public IDrillInstancePresenter getValidDrillPresenter(IDrillContent availableContent) {
-		// TODO Auto-generated method stub
-		return new BaseDrillInstancePresenter(clientFactory);
+	public IDrillInstancePresenter getValidDrillPresenter(IDrillContent availableContent, IDrillResultsDelegate drillResultsDelegate) {
+		return new BaseDrillInstancePresenter(clientFactory.getMazeDrillView(), clientFactory.getDrillTextManager(), drillResultsDelegate);
 	}
 
 }

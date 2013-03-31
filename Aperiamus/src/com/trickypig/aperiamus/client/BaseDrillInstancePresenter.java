@@ -1,20 +1,25 @@
 package com.trickypig.aperiamus.client;
 
 import com.google.gwt.user.client.Window;
+import com.trickypig.aperiamus.client.utils.IDrillResultsDelegate;
+import com.trickypig.aperiamus.client.view.IMazeDrillView;
 
 public class BaseDrillInstancePresenter implements IDrillInstancePresenter {
 	
-	private IClientFactory clientFactory;
+//	private IClientFactory clientFactory;
 	private IDrillInstanceContent curInstanceContent;
 	private IDrillResults drillResults;
 	private IResponseEvaluator responseEvaluator;
 	private IDrillChallenge currentChallenge;
 	private boolean isCurrentChallengeInitialized = false;
-	private IDrillView drillView;
+	private IMazeDrillView drillView;
+	private ITextManager textManager;
+	private IDrillResultsDelegate drillResultsDelegate;
 
-	public BaseDrillInstancePresenter(IClientFactory clientFactory) {
-		this.clientFactory = clientFactory;
-		this.drillView = clientFactory.getBaseDrillView();				//this will allow me to have "classes" of Presenters, each with its own View class, which it could request specifically from the ClientFactory
+	public BaseDrillInstancePresenter(IMazeDrillView drillView, ITextManager textManager, IDrillResultsDelegate drillResultsDelegate) {
+		this.drillView = drillView;
+		this.textManager = textManager;
+		this.drillResultsDelegate = drillResultsDelegate;
 	}
 
 	@Override
@@ -30,7 +35,7 @@ public class BaseDrillInstancePresenter implements IDrillInstancePresenter {
 	}
 
 	protected void presentIntroScreen() {
-		drillView.displayIntroScreen(clientFactory.getTextManager().getBaseDrillIntroText());
+		drillView.displayIntroScreen(textManager.getBaseDrillIntroText());
 	}
 
 	protected IDrillResults initializeDrillResults() {

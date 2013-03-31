@@ -1,5 +1,7 @@
 package com.trickypig.aperiamus.client;
 
+import com.trickypig.aperiamus.client.utils.IDrillResultsDelegate;
+
 public class DrillModeController implements IDrillModeController{
 
 	private IClientFactory clientFactory;
@@ -13,14 +15,14 @@ public class DrillModeController implements IDrillModeController{
 	}
 
 	@Override
-	public void startNewDrill(IDrillContent availableContent) {
+	public void startNewDrill(IDrillContent availableContent, IDrillResultsDelegate drillResultsDelegate) {
 		if (availableContent == null) {
 			availableContent = clientFactory.getDrillContentGenerator().obtainNewDrillSessionContent();			//is this ok?
 		}
 //		getContentManager().storeDrillContent(availableContent);
 		setCurrentDrillContent(availableContent);
 		
-		IDrillInstancePresenter currentInstancePresenter = getContentManager().getValidDrillPresenter(availableContent);
+		IDrillInstancePresenter currentInstancePresenter = getContentManager().getValidDrillPresenter(availableContent, drillResultsDelegate);
 		currentInstance = getContentManager().generateDrillInstanceContent(availableContent, currentInstancePresenter);
 		currentInstancePresenter.startDrillInstance(currentInstance);			
 	}

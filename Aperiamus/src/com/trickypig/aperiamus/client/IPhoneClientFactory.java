@@ -1,11 +1,15 @@
 package com.trickypig.aperiamus.client;
 
+import com.trickypig.aperiamus.client.view.IMazeDrillView;
+import com.trickypig.aperiamus.client.view.impl.MazeDrillViewIPhone;
+
 public class IPhoneClientFactory implements IClientFactory {
 
 	DrillModeController drillMode;
 	IGameController gameController;
 	IExperienceTracker experienceTracker;
 	BaseDrillContentGenerator drillContentGenerator;
+	IMazeDrillView mazeDrillView;
 	
 	@Override
 	public DrillModeController getDrillMode() {
@@ -42,15 +46,17 @@ public class IPhoneClientFactory implements IClientFactory {
 	}
 
 	@Override
-	public ITextManager getTextManager() {
+	public ITextManager getDrillTextManager() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IDrillView getBaseDrillView() {
-		// TODO Auto-generated method stub
-		return null;
+	public IMazeDrillView getMazeDrillView() {
+		if (mazeDrillView == null) {
+			mazeDrillView = new MazeDrillViewIPhone();
+		}
+		return mazeDrillView;
 	}
 	
 
